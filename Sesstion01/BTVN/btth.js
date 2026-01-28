@@ -1,0 +1,20 @@
+let title = prompt("Tên sách:");
+let nameAuthor = prompt("Tên tác giả:");
+let date = +prompt("Năm xuất bản:");
+let price = +prompt("Giá tiền một cuốn:");
+let number = +prompt("số lượng nhập kho:");
+title = title.trim().toUpperCase();
+nameAuthor = nameAuthor.toUpperCase();
+let firstName = nameAuthor.substring(0, 3);
+let randomNumber = Math.floor(Math.random() * 1000) + 1;
+let bookId = "Mã sách:" + firstName + date + randomNumber
+let bookAge = 2026 - date;
+let sumPrice = number * price;
+console.log("--- PHIẾU NHẬP KHO ---");
+console.log("Mã sách: " + bookId);
+console.log("Tên sách: " + title);
+console.log("Tác giả: " + nameAuthor);
+console.log("Năm xuất bản: "+date);
+console.log("Tuổi sách: "+bookAge);
+console.log("Tổng giá trị: "+sumPrice + "VND");
+console.log("Ngăn kệ gợi ý: Kệ số "+Math.floor(Math.random()) + 1);
