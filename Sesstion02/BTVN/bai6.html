@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let title = prompt("Nhập tên sách");
+        let author = prompt("Nhập tên người mượn");
+        let status = prompt("Nhập trạng thái có sẵn, đã mượn, không có sẵn");
+        let date = +prompt("Nhập ngày mượn");
+        let card = +prompt("Có thẻ chưa 0-1");
+
+
+        status = String(status.trim().toLowerCase());
+        switch (status) {
+            case "có sẵn":
+                if (card == 1) {
+                    console.log("Chúc mừng, bạn có thể mượn sách này"); 
+                }
+                break;
+            
+            case "đã mượn":
+                if (date < 30) {
+                    if (card == 1) {
+                        console.log("Sách đang được mượn, vui lòng đợi đến khi trả lại"); 
+                    }else{
+                        console.log("Bạn không thể mượn sách nếu không có thẻ thư viện"); 
+                    }
+                }else{
+                    console.log("Sách này đã bị trộm");
+                }
+                break;
+
+            case "không có sẵn":
+                console.log("Sách này hiện tại không có sẵn trong thư viện, bạn có thể đăng ký mượn sau"); 
+                break;
+            default:
+                console.log("Thông tin không hợp lệ, vui lòng nhập lại"); 
+                break;
+        }
+    </script>
+</body>
+</html>
