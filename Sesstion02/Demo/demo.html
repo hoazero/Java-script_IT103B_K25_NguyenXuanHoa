@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //toán tử ss
+        console.log(1>2); //false
+        console.log(1<2); //true
+        console.log("a">2); //false- kí tự luôn luôn nhỏ hơn số
+        console.log("10">2); //nếu chuỗi là số thì ss như bt // true
+        console.log("a">"b"); // kí tự ở sau thì lớn hơn
+        console.log("1"==1);  // true
+        console.log("1"===1);  // xét kiểu dữ liệu -> false
+        console.log("1"!=1);   //ss khác !== giống ===
+
+
+        //toán tử logic
+        console.log(1>2 && 3>2); //false
+        console.log(1>2 || 3>2); //true
+        
+        let input = +prompt("Nhập số nguyên");
+        let number = input || 0;  // nếu sai lấy cái còn lại
+        console.log(number);
+        
+        number = input && 0;  // nếu đúng lấy cái còn lại
+
+        //câu điều kiện if else
+        let iput = prompt("nhập tên của bạn").trim;
+        if(iput){
+            console.log("tên của bạn là", iput);
+            
+        }else{
+            console.log("bạn chưa nhập tên");
+        }
+
+        //câu lệnh switch/case 
+        let number1 = 1;
+        switch (number1) {
+            case 1:
+                console.log("số là 1");
+                break; 
+            case 2:
+                console.log("số là 2");
+                break;
+            default:
+                console.log("ko");
+                break;
+        }
+    </script>
+</body>
+</html>

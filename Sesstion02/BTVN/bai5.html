@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let title = prompt("Nhập tên sách");
+        let status = prompt("Trạng thái");
+        let year = +prompt("Nhập năm xuất bản");
+
+        status = String(status.trim().toLowerCase());
+        let nowYear = new Date().getFullYear();
+        let timeLive = nowYear - year;
+
+
+        switch (status) {
+            case "có sẵn":
+                if(timeLive <= 5){
+                    console.log("Sách này mới và có sẵn để mượn"); 
+                }
+                else{
+                    console.log("Sách này có sẵn nhưng đã lâu năm"); 
+                }
+                break;
+            
+            case "đã mượn":
+                if(timeLive <= 10){
+                    console.log("Sách này đã mượn nhưng khá mới, có thể mượn lại sau");  
+                }
+                else{
+                    console.log("Sách này đã mượn và khá cũ"); 
+                }
+                break;
+            default:
+                console.log("ko");
+                
+                break;
+        }
+
+    </script>
+</body>
+</html>

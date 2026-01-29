@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let name = prompt("Nhập tên người dùng");
+        let role = prompt("nhập vai trò admin, student, guest");
+        let monny = +prompt("Số dư tài khoản thẻ");
+        let status = prompt("Trạng thái thẻ thư viện true - ...");
+        let lostday = prompt("Số ngày quá hạn trả sách");
+
+        role = String(role);
+        role = role.toLowerCase();
+        switch (role) {
+            case "admin":
+                role = "Chào Admin, bạn có toàn quyền hệ thống";
+                
+                break;
+            
+            case "student":
+                role = "Chào sinh viên, bạn có thể mượn sách";
+                
+                break;
+
+            case "guest":
+                role = "Chào khách, bạn chỉ có thể đọc tại chỗ";
+                
+                break;
+            default:
+                role = "Lỗi: Vai trò không hợp lệ!";
+                
+                break;
+        }
+
+        let result;
+        if(name && (role == "admin" || role == "student") && monny > 0){
+            result = "ĐƯỢC PHÉP MƯỢN SÁCH";
+            
+        }else{
+            result = "YÊU CẦU BỊ TỪ CHỐI";
+        }
+        let canhBao = "";
+        // let = 0;
+
+        let fine; //tiền phạt
+        if (lostday <= 0) {
+            fine = "Cảm ơn bạn đã trả đúng hạn";
+        }else if (lostday <= 5) {
+            fine = 5000 * lostday;
+        }else if (lostday <= 10){
+            fine = 10000 * lostday;
+        }else{
+            fine = 200000;
+            canhBao = "TÀI KHOẢN BỊ KHÓA";
+        }
+
+        console.log("--- HỆ THỐNG MƯỢN TRẢ ---");
+        console.log("Người dùng:",name);
+        console.log("Quyền hạn:",role);
+        console.log("Kết quả mượn:",result);
+        console.log("Tình trạng trả sách: Quá hạn",lostday,"ngày");
+        console.log("Tiền phạt:",fine, "VNĐ", canhBao);
+    </script>
+</body>
+</html>
