@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = 10000000;
+        console.log(str.toLocaleString("vi-VN")); // tạo dấu chấm phân cách 
+        // giữa 3 số 0 một và chuyển số thành chuỗi
+        
+        // vòng lặp for
+        //for(khởi tạo; điều kiện; cập nhật){//code đc thực hiện lặp đi lặp lại }
+        for (let index = 0; index < 5; index++) {
+            console.log(index);
+            
+        }
+
+        //vòng lặp while
+        //while (điều kiện){//code được thực hiện lặp lại}
+        let j = 0;
+        while(j < 5){
+            console.log(j);
+            j++;
+        }
+
+        //do/while
+        //do{//code chạy lặp lại}while(điều kiện)
+        let i = 1;
+        do{
+            console.log(i);
+            i++;
+        }while(i < 5);
+
+        //vòng lặp lồng nhau
+        for(let i = 1; i < 6; i++){
+            console.log(`lần lặp thứ ${i} ngoài`);
+            
+            for(let j = 1; j < 6; j++){
+                console.log("code lặp bên trong");
+                
+            }
+        }
+
+        //break/continue
+        
+    </script>
+</body>
+</html>

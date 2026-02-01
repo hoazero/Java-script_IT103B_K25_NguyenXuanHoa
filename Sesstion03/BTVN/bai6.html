@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Feedback System</title>
+</head>
+<body>
+    <script>
+        let total = 0;
+        let critical = 0;
+        let medium = 0;
+        let minor = 0;
+        let improvement = 0;
+        let positive = 0;
+
+        while(true){
+            let input = prompt("Có khiếu nại/phản hồi mới từ bạn đọc không? (có/không)");
+
+            if(input === null || input.toLowerCase() === "không" || input.toLowerCase() === "khong"){
+                break;
+            }
+
+            let action = input.toLowerCase();
+            if (action === "có" || action === "co") {
+                let readerName = "";
+                while(true){
+                    readerName = prompt("Nhập tên bạn đọc (không được để trống):");
+                    if (readerName !== null && readerName.trim() !== ""){
+                        break;
+                    }
+                    alert("Lỗi: Tên bạn đọc không được để trống!");
+                }
+                let cardId = prompt("Nhập mã bạn đọc (nếu có):");
+                let feedback;
+                while(true){
+                    feedback = prompt("Chọn loại phản hồi:\n1 - Phàn nàn / Khiếu nại\n2 - Đề xuất cải thiện\n3 - Phản hồi tích cực");
+                    if(feedback === "1" || feedback === "2" || feedback === "3"){
+                        break;
+                    }
+                    alert("Lỗi: Vui lòng nhập số 1, 2 hoặc 3");
+                }
+
+                let severity = "0";
+                if(feedback === "1"){
+                    while(true){
+                        severity = prompt("Mức độ nghiêm trọng:\n1 - Nhẹ\n2 - Trung bình\n3 - Nghiêm trọng");
+                        if(severity === "1" || severity === "2" || severity === "3"){
+                            break;
+                        }
+                        alert("Lỗi: Khiếu nại phải có mức độ từ 1 đến 3");
+                    }
+                }
+                let content = prompt("Nội dung ngắn gọn:");
+                total++;
+                
+                let processResult = ""; 
+                if(feedback === "1"){
+                    if (severity === "3"){
+                        processResult = "-> Chuyển ngay lãnh đạo - Khiếu nại nghiêm trọng";
+                        critical++;
+                    } else if(severity === "2"){
+                        processResult = "-> Ghi nhận, sẽ xử lý trong ngày - Khiếu nại trung bình";
+                        medium++;
+                    } else {
+                        processResult = "-> Xử lý ngay tại quầy - Khiếu nại nhẹ";
+                        minor++;
+                    }
+                } else if(feedback === "2"){
+                    processResult = "-> Cảm ơn! Đề xuất đã được ghi nhận";
+                    improvement++;
+                } else if (feedback === "3"){
+                    processResult = "-> Cảm ơn bạn đã phản hồi tích cực";
+                    positive++;
+                }
+
+                console.log(`Bạn đọc: ${readerName} | Loại: ${feedback}`); 
+                console.log(processResult);
+            }
+        }
+        console.log(`Tổng số phản hồi: ${total}`);
+        console.log(`Khiếu nại nghiêm trọng: ${critical}`);
+        console.log(`Khiếu nại trung bình: ${medium}`);
+        console.log(`Khiếu nại nhẹ: ${minor}`);
+        console.log(`Đề xuất cải thiện: ${improvement}`);
+        console.log(`Phản hồi tích cực: ${positive}`);
+    </script>
+</body>
+</html>

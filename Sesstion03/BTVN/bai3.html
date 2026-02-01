@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý gia hạn sách</title>
+</head>
+<body>
+    <script>
+        let successCount = 0;
+        let failCount = 0;
+
+        while (true) {
+            let input = prompt("Có yêu cầu gia hạn mới không? (có/không)");
+            
+            if (input === null || input.toLowerCase() === "không" || input.toLowerCase() === "khong") {
+                break;
+            }
+
+            let action = input.toLowerCase();
+
+            if (action === "có" || action === "co") {
+                let user = prompt("Nhập tên bạn đọc:");
+                let bookName = prompt("Nhập tên sách:");
+
+                let currentDays;
+                while (true) {
+                    let rawCurrent = prompt(`Nhập số ngày đã mượn hiện tại cho cuốn ${bookName} (phải >= 1):`);
+                    if (rawCurrent === null) break; 
+                    currentDays = +rawCurrent;
+                    if (!isNaN(currentDays) && currentDays >= 1) break;
+                    console.log("Lỗi: Số ngày mượn hiện tại không hợp lệ.");
+                }
+                if (currentDays === undefined) continue;
+
+                let extendDays;
+                while (true) {
+                    let rawExtend = prompt(`Nhập số ngày muốn gia hạn thêm cho cuốn ${bookName} (phải >= 1):`);
+                    if (rawExtend === null) break;
+                    extendDays = +rawExtend;
+                    if (!isNaN(extendDays) && extendDays >= 1) break;
+                    console.log("Lỗi: Số ngày muốn gia hạn không hợp lệ.");
+                }
+                if (extendDays === undefined) continue;
+
+                let resultMsg = "";
+                let totalTime = currentDays + extendDays;
+
+                if (totalTime > 60) {
+                    resultMsg = "Không được gia hạn: Tổng thời gian vượt quá 60 ngày tối đa";
+                    failCount++;
+                } else if (currentDays > 45) {
+                    resultMsg = "Không được gia hạn: Đã mượn quá lâu (>45 ngày)";
+                    failCount++;
+                } else {
+                    resultMsg = "Gia hạn thành công";
+                    successCount++;
+                }
+
+                console.log(`Bạn đọc: ${user} | Sách: ${bookName}`);
+                console.log(`Kết quả: ${resultMsg}`);
+            } else {
+                console.log("Lệnh không hợp lệ. Vui lòng chỉ nhập 'có' hoặc 'không'.");
+            }
+        }
+        console.log(`Số lần gia hạn thành công: ${successCount}`);
+        console.log(`Số lần gia hạn không thành công: ${failCount}`);
+    </script>
+</body>
+</html>

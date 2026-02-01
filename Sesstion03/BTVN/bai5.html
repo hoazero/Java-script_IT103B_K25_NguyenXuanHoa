@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let total = 0;
+        let successful = 0;
+        let denied = 0;
+        let pending = 0;
+
+        while (true){
+            let input = prompt ("Có yêu cầu đặt mượn trước mới không? (có/không)");
+            if(input === null || input.toLowerCase() === "không" || input.toLowerCase() === "khong"){
+                break;
+            }
+            let action = input.toLowerCase();
+            if(action === "có" || action === "co"){
+                let readerName = prompt("Nhập tên bạn đọc :");
+
+                let bookId ="";
+                while (true){
+                    bookId = prompt("Nhập mã sách muốn đặt trước: ");
+                    if(bookId !== null && bookId.trim() !== ""){
+                        break;
+                    }
+                    console.log("Lỗi: Mã sách không được để trống!");
+                }
+                let bookName = prompt("Nhập tên sách (tham khảo):");
+
+                let waitingDays;
+                while(true){
+                    let rawDays = prompt(`Nhập số ngày dự kiến chờ cho cuốn ${bookName} (>=1):`);
+                    if(rawDays === null){
+                        break;
+                    }
+                    waitingDays = parseInt(rawDays);
+                    if(!isNaN(waitingDays) && waitingDays >= 1){
+                        break;
+                    }
+                    console.log("Lỗi: Số ngày chờ phải là số nguyên >= 1");
+                }
+                let priority;
+                while(true){
+                    priority = prompt("Chọn mức độ ưu tiên: \n1 - Sinh viên\n2 - Giảng viên\n3 - Nhân viên/Đặc cách");
+                    if(priority === "1" || priority === "2" || priority === "3"){
+                        break;
+                    }
+                    console.log("Lỗi: Vui lòng chỉ nhập 1,2 hoặc 3");
+                }
+                total++;
+                let result = "";
+                if (waitingDays > 45){
+                    result = "Từ chối: Thời gian chờ quá lâu (>45 ngày)";
+                    denied++;
+                }else if (priority === "3"){
+                    result = "Đặt trước thành công - Ưu tiên đặc cách cao nhất";
+                    successful++;
+                }else if (priority === "2" && waitingDays <= 30){
+                    result = "Đặt trước thành công - Ưu tiên giảng viên/nghiên cứu";
+                    successful++;
+                }else if(priority === "1" && waitingDays <= 21){
+                    result = "Đặt trước thành công";
+                    successful++;
+                }else{
+                    result = "Đặt trước tạm thời - Chờ xét duyệt thêm";
+                    pending++;
+                }
+                console.log(`Bạn đọc : ${readerName} | Mã sách; ${bookId}`);
+                console.log(`Kết quả xử lý; ${result}`);
+            }else{
+                console.log("Lệnh không hợp lệ. Vui lòng nhập có hoặc không");
+            }
+        }
+        console.log(`1. Tổng số yêu cầu đã xử lý :${total}`);
+        console.log(`2. Số yêu cầu thành công :${successful}`);
+        console.log(`3. Số yêu cầu bị từ chối :${denied}`);
+        console.log(`4. Số yêu cầu chờ xét duyệt :${pending}`);
+        console.log("Ca làm việc kết thúc. Vui lòng kiểm tra báo cáo trong Console.");
+    </script>
+</body>
+</html>

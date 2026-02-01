@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let borrow = +prompt("Hôm nay có bao nhiêu lượt mượn sách?");
+        for (let index = 0; index < borrow; index++) {
+            let userName = prompt("Nhập tên người mượn");
+            let title = prompt("Nhập tên sách mượn");
+            let lostDay = prompt("Nhập ngày mượn");
+
+            let warning;
+            if (lostDay > 14) {
+                warning = "Cảnh báo: Thời gian mượn vượt quy định (tối đa 14 ngày)";
+            }else{
+                warning = "Mượn thành công";
+            }
+
+            console.log(userName);
+            console.log(title);
+            console.log(lostDay);
+            console.log(warning);
+        }
+    </script>
+</body>
+</html>

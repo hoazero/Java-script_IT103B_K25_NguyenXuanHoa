@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let password;
+        let count = 0;
+        do{
+            password = prompt("Nhập mật khẩu");
+            if(password !== "admin123"){
+                count++;
+                // continue;
+            }else{
+                console.log("Đăng nhập thành công");
+                break;
+            }
+
+            if (count == 3) {
+                console.log("Hệ thống bị khóa");
+                break;
+            }
+        }while (1);
+
+        if(password === "admin123"){
+            let choice = +prompt(`
+Chọn chức năng
+1-Nhập lô sách mới
+2-Vẽ sơ đồ kệ sách
+3-Thoát
+            `);
+            switch (choice){
+                case 1:
+                    let numberBooks = prompt("Bạn muốn nhập bao nhiêu cuốn sách?");
+                    let sumPrice = 0;
+                    for (let i = 0; i < numberBooks; i++) {
+                        let price = +prompt("nhập giá tiền của cuốn sách");
+                        if (price <= 0) {
+                            continue;
+                        }
+
+                        Number(sumPrice);
+                        sumPrice += price; 
+                    }
+                    console.log("tổng tiền", sumPrice);
+                    break;
+            
+                case 2:
+                    for (let i = 0; i < 3; i++) {
+                        for (let j = 0; j < 5; j++) {
+                            
+                            if (i == 1 && j == 2) {
+                                console.log("Khu vực", i + 1, "- Kệ", j + 1, ": Đang sửa chữa");
+                                continue;
+                            }
+
+                            console.log("Khu vực", i + 1, "- Kệ", j + 1);
+                        }
+                    }
+                    break;
+                case 3:
+                    console.log("bai bai");
+                    break;
+                default:
+                    console.log("Nhập sai");
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

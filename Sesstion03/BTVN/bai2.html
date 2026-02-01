@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let turn = +prompt("Nhập số lượt trả sách");
+        let time;
+        let i = 0;
+        let count = 0;
+        let countt = 0;
+        while (i < turn) {
+            let name = prompt("Nhập tên người trả");
+            let title = prompt("Nhập tên sách");
+            let date = prompt("Nhập ngày mượn 1 trở lên");
+            date = parseInt(date);
+            if(date < 1){
+                console.log("nhập lại");
+                break;
+            }else{
+                if(date <= 14){
+                    time = "Trả đúng hạn";
+                }else if(date <= 21){
+                    time = "Trả muộn nhẹ" + "Phạt nhắc nhở";
+                    countt++;
+                }else{
+                    time = "Quá hạn nghiêm trọng" + "Cần ghi biên bản phạt";
+                    countt++;
+                }
+                count++;
+            }
+            i++;
+        }
+
+        console.log("Tổng số lượt trả sách", count);
+        console.log("Số lượt trả muộn", countt);
+        
+    </script>
+</body>
+</html>

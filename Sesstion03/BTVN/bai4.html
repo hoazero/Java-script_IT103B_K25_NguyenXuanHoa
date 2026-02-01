@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Inventory Management</title>
+</head>
+<body>
+    <script>
+        let total = 0;
+        let lostBooks = 0;
+        let outOfStockBooks = 0;
+        let highInventoryBooks = 0;
+        let normalInventoryBooks = 0;
+
+        while (true) {
+            let input = prompt("Tiếp tục kiểm kê sách tiếp theo? (có/không)");
+
+            if (input === null || input.toLowerCase() === "no" || input.toLowerCase() === "không" || input.toLowerCase() === "khong") {
+                break;
+            }
+            
+            let action = input.toLowerCase();
+
+            if (action === "có" || action === "co") {
+                let bookId = "";
+
+                while (true) {
+                    bookId = prompt("Nhập mã sách (không được để trống):");
+                    if (bookId !== null && bookId.trim() !== "") {
+                        break;
+                    }
+                    alert("Lỗi: Mã sách không được để trống!");
+                }
+
+                let bookName = prompt("Nhập tên sách:");
+
+                let quantity;
+
+                while (true) {
+                    let rawQty = prompt(`Nhập số lượng thực tế của cuốn ${bookName} (phải >= 0):`);
+                    if (rawQty === null) break;
+                    
+                    quantity = parseInt(rawQty);
+                    if (!isNaN(quantity) && quantity >= 0) {
+                        break;
+                    }
+                    alert("Lỗi: Vui lòng nhập số nguyên >= 0");
+                }
+
+                let condition;
+                while (true) {
+                    condition = prompt("Chọn tình trạng sách:\n1 - Bình thường\n2 - Mất");
+                    if (condition === "1" || condition === "2") {
+                        break;
+                    }
+                    alert("Lỗi: Vui lòng chỉ nhập số 1 hoặc số 2");
+                }
+
+                total++;
+                if (condition === "2") {
+                    lostBooks++;
+                    console.log(`${bookName}: Sách mất`);
+                } else if (condition === "1" && quantity === 0) {
+                    outOfStockBooks++;
+                    console.log(`${bookName}: Sách hết hàng`);
+                } else if (condition === "1" && quantity >= 10) {
+                    highInventoryBooks++;
+                    console.log(`${bookName}: Tồn kho nhiều`);
+                } else {
+                    normalInventoryBooks++;
+                    console.log(`${bookName}: Tồn kho bình thường`);
+                }
+
+            } else {
+                alert("Vui lòng nhập 'có' hoặc 'không'");
+            }
+        }
+        console.log(`Tổng số sách: ${total}`);
+        console.log(`Sách mất: ${lostBooks}`);
+        console.log(`Sách hết hàng: ${outOfStockBooks}`);
+        console.log(`Tồn kho nhiều: ${highInventoryBooks}`);
+        console.log(`Tồn kho bình thường: ${normalInventoryBooks}`);
+    </script>
+</body>
+</html>
