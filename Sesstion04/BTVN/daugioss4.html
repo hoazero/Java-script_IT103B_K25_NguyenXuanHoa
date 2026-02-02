@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Xuân Hòa</title>
+</head>
+<body>
+    <script>
+        console.log("câu 1");
+        
+        let n = prompt("nhạp số nguyên n");
+        if (n % 2 == 0) {
+            console.log(n, "là số chẵn");
+            
+        }else{
+            console.log(n, "là số lẻ");
+        }
+
+        if (n > 0) {
+            console.log(n, "là số dương"); 
+            for (let i = 1; i <= n; i++) {
+                console.log(i);
+            }
+        }else if(n < 0){
+            console.log(n, "là số âm"); 
+            console.log("Giá trị n không hợp lệ để tạo dãy số");
+            
+        }else{
+            console.log(n, "bằng 0"); 
+            console.log("Giá trị n không hợp lệ để tạo dãy số");
+        }
+
+        console.log("câu 2");
+        
+        let sum = 0;
+        for (let j = 1; j <= 50; j++) {
+            if(j % 5 == 0 && j % 3 == 0){
+                console.log("FizzBuzz");
+            }else if(j % 5 == 0){
+                console.log("Buzz");
+            }else if(j % 3 == 0){
+                console.log("Fizz");
+                sum += j;
+            }else{
+                console.log(j);
+            }
+        }
+
+        console.log("Tổng bằng", sum);
+        
+    </script>
+</body>
+</html>
