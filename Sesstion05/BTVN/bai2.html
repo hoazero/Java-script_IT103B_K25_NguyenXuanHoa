@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [];
+
+        let numBooks = parseInt(prompt("Nhập số sách bị trả muộn - nguyên dương"));
+        let nameBooks;
+        let lenCount = 0;
+        for(let i = 0; i < numBooks; i++){
+            nameBooks = prompt(`tên quấn thứ ${i + 1}`);
+            arr.push(nameBooks);
+            if(nameBooks.length > 20){
+                lenCount++;
+            }
+        }
+
+        let count = 0;
+        
+        for(let j = 0; j < arr.length; j++){
+            count++;
+        }
+        console.log("tổng số sách bị trả muộn:",count);
+
+        console.log("Danh sách sách đã trả:");
+        for(let i = 0; i < arr.length; i++){
+            console.log(`${i + 1}. ${arr[i]}`);
+        }
+
+        console.log("Số lượng sách có tên dài hơn 20 ký tự:",lenCount);
+    </script>
+</body>
+</html>

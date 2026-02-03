@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let myArr = [1, 2, , 3, 4, 5];
+        console.log(myArr.length); // số lượng phàn tử mảng, độ dài mảng
+        
+        let arr = [1, 2, , 3, 4, 5]; // let arr = myArr - true - 2 mảng đang sử dụng chung 1 địa chỉ trong bộ nhớ
+        console.log(myArr == arr); // false
+        
+        // các thao tác với mảng CRUD
+        let arrOne =[1, 2, 3, 4, 5];
+        // thao tác đọc cơ bản
+        for (let i = 0; i < arrOne.length; i++) {
+            console.log(i, arrOne[i]);
+        }
+
+        // duyệt và in chỉ số
+        for(let index in arrOne){
+            console.log("chỉ số của phần tử", index);
+        }
+
+        //duyệt và in giá trị
+        for (let element of arrOne) {
+            console.log("giá trị của phần tử",element);
+        }
+
+        // thao tác thêm phần tử
+        //thêm vào cuối
+        arrOne.push(20);
+        console.log(arrOne);
+        //thêm vào đầu
+        arrOne.unshift(20);
+        // thêm vào vị trí bất kỳ
+        arrOne.splice(4, 0, "đây là phần tử đc chèn");// - vị trí chèn - số phần tử xóa - các giá trị chèn vào
+
+        //thao tác xóa phần tử
+        // xóa đầu
+        arrOne.shift();
+        // xóa cuối
+        arrOne.pop();
+        //xóa ở vị trí bất kỳ
+        arrOne.splice(5, 1, "phần tử mới");
+
+        //cập nhật phần tử
+        arrOne[2] = 9;
+
+
+        //các phương thức khi làm việc với mảng
+        let newArr = [11, 3, 9, 6, 7, 9];
+        //chỉ số của phần tử đầu tiên thông qua giá trị
+        let firstPositon = newArr.indexOf(9); // 2
+        
+        //chỉ số của phần tử cuối cùng thông qua giá trị
+        let lastPositon = newArr.lastIndexOf(9); //5
+
+        //nối 2 mảng lại với nhau
+        newArr = newArr.concat([1, 2, 3])
+        console.log(newArr);
+        
+        // chuyển mảng thành chuỗi
+        let arrString = newArr.toString();
+        
+        
+    </script>
+</body>
+</html>

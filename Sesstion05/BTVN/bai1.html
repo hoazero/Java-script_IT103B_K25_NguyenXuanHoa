@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [];
+
+        let numBooks = parseInt(prompt("Nhập số sách muốn trả - nguyên dương"));
+        let nameBooks;
+        for(let i = 0; i < numBooks; i++){
+            nameBooks = prompt(`tên quấn thứ ${i + 1}`);
+            arr.push(nameBooks);
+        }
+
+        let count = 0;
+        for(let j = 0; j < arr.length; j++){
+            count++;
+        }
+        console.log("Tổng số sách đã được trả:",count);
+
+        console.log("Danh sách sách đã trả:");
+        for(let i = 0; i < arr.length; i++){
+            console.log(`${i + 1}. ${arr[i]}`);
+        }
+    </script>
+</body>
+</html>
