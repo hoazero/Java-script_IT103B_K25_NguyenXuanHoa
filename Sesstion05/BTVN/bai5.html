@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let booksId = [];
+        let booksName = [];
+        let booksCategory = [];
+        let inventoryQuantity = [];
+
+        let n = parseInt(prompt("Có bao nhiêu loại sách cần nhập thông tin hôm nay?"));
+
+        for (let i = 0; i < n; i++) {
+            let id = "";
+            while (true) {
+                id = prompt(`Nhập mã sách thứ ${i + 1}:`).trim();
+                if (id === "") continue;
+                
+                let isDuplicate = false;
+                for (let j = 0; j < booksId.length; j++) {
+                    if (booksId[j] === id) {
+                        isDuplicate = true;
+                        break;
+                    }
+                }
+                
+                if (!isDuplicate) break;
+                alert("Mã sách đã tồn tại, vui lòng nhập mã khác!");
+            }
+
+            let name = "";
+            while (name === "") {
+                name = prompt(`Nhập tên sách thứ ${i + 1}:`).trim();
+            }
+
+            let category = prompt(`Nhập các thể loại của sách thứ ${i + 1} (cách nhau bởi dấu phẩy):`);
+            
+            let qty;
+            do {
+                qty = parseInt(prompt(`Nhập số lượng tồn kho của sách thứ ${i + 1}:`));
+            } while (isNaN(qty) || qty < 0);
+
+            booksId.push(id);
+            booksName.push(name);
+            booksCategory.push(category);
+            inventoryQuantity.push(qty);
+        }
+
+        let countLapTrinh = 0;
+        for (let i = 0; i < booksCategory.length; i++) {
+            if (booksCategory[i].toLowerCase().includes("lập trình")) {
+                countLapTrinh++;
+            }
+        }
+        console.log(`a. Tổng số sách thuộc thể loại "Lập trình": ${countLapTrinh}`);
+
+        let jsWebIds = [];
+        for (let i = 0; i < booksCategory.length; i++) {
+            let catLower = booksCategory[i].toLowerCase();
+            if (catLower.includes("javascript") && catLower.includes("web")) {
+                jsWebIds.push(booksId[i]);
+            }
+        }
+        console.log(`b. Các mã sách thuộc cả "JavaScript" và "Web": ${jsWebIds.join(", ")}`);
+
+        let minQty = inventoryQuantity[0];
+        let minIndex = 0;
+        for (let i = 1; i < inventoryQuantity.length; i++) {
+            if (inventoryQuantity[i] < minQty) {
+                minQty = inventoryQuantity[i];
+                minIndex = i;
+            }
+        }
+        console.log(`c. Loại sách có tồn kho thấp nhất: Mã: ${booksId[minIndex]} - Tên: ${booksName[minIndex]} (${minQty} bản)`);
+    </script>
+</body>
+</html>
