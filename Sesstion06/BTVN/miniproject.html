@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let libraries = ["Toán", "Văn", "Anh"];
+
+        function login() {
+            let count = 0;
+            while (count < 3) {
+                let user = prompt("Tên đăng nhập:");
+                let pass = prompt("Mật khẩu:");
+                if (user === "admin" && pass === "12345") {
+                    alert("Đăng nhập thành công!");
+                    return true;
+                }
+                count++;
+                alert(`Sai tài khoản/mật khẩu! Còn ${3 - count} lần thử.`);
+            }
+            alert("Tài khoản đã bị khóa!");
+            return false;
+        }
+
+        function start() {
+            if (!login()) return;
+
+            let isRunning = true;
+            while (isRunning) {
+                let choice = prompt(`=== QUẢN LÝ THƯ VIỆN ===
+1. Nhập thêm lô sách mới
+2. Hiển thị danh sách sách
+3. Tìm kiếm sách
+4. Cập nhật tên sách
+5. Đảo ngược thứ tự kệ sách
+6. Nhập kho từ nguồn khác
+7. Thoát chương trình`);
+
+                switch (choice) {
+                    case "1":
+                        let input = prompt("Nhập tên các cuốn sách (cách nhau bởi dấu phẩy):");
+                        if (input) {
+                            let tempArr = input.split(",");
+                            for (let item of tempArr) {
+                                libraries.push(item.trim());
+                            }
+                            alert("Đã thêm lô sách thành công!");
+                        }
+                        break;
+
+                    case "2":
+                        console.clear();
+                        console.log("=== DANH SÁCH SÁCH ===");
+                        for (let i = 0; i < libraries.length; i++) {
+                            console.log(`${i + 1}. ${libraries[i]}`);
+                        }
+                        alert("Đã in danh sách ra console.");
+                        break;
+
+                    case "3":
+                        let keyword = prompt("Nhập tên sách cần tìm:");
+                        let idx = libraries.indexOf(keyword);
+                        if (idx !== -1) {
+                            alert(`Tìm thấy "${keyword}" tại vị trí index: ${idx}`);
+                        } else {
+                            alert("Không tìm thấy sách!");
+                        }
+                        break;
+
+                    case "4":
+                        let oldName = prompt("Nhập tên sách cũ:");
+                        let updateIdx = libraries.indexOf(oldName);
+                        if (updateIdx !== -1) {
+                            let newName = prompt("Nhập tên mới:");
+                            libraries.splice(updateIdx, 1, newName.trim());
+                            alert("Cập nhật thành công!");
+                        } else {
+                            alert("Sách không tồn tại!");
+                        }
+                        break;
+
+                    case "5":
+                        libraries.reverse();
+                        console.log("=== KỆ SÁCH ĐÃ ĐẢO NGƯỢC ===");
+                        for (let key in libraries) {
+                            console.log(`Vị trí ${key}: ${libraries[key]}`);
+                        }
+                        alert("Đã đảo ngược kệ sách.");
+                        break;
+
+                    case "6":
+                        let otherBranch = ["Sử", "Địa", "Lý"];
+                        libraries = libraries.concat(otherBranch);
+                        alert("Đã gộp kho từ chi nhánh khác.");
+                        break;
+
+                    case "7":
+                        alert("Hẹn gặp lại!");
+                        isRunning = false;
+                        break;
+
+                    default:
+                        alert("Lựa chọn không hợp lệ!");
+                }
+            }
+        }
+        start();
+    </script>
+</body>
+</html>

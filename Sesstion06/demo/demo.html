@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let stringStudent = "Quý, Nam, Lan, Hùng, Nam";
+        let students = stringStudent.split(", ");
+        console.log(students);
+        
+        students.reverse();
+        console.log(students);
+        
+        if(students.includes("Lan")){
+            console.log("tên lan tồn tại");
+        }else{
+            console.log("tên lan ko tồn tại");
+        }  
+
+        console.log("vị trí đầu tiên", students.indexOf("Nam"));
+        
+        let arr = [100, 200, 300, 400];
+
+        for (const element of arr) {
+            console.log(element);
+        }
+
+        for (const index in arr) {
+            console.log(index);
+        }
+
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+            if(i % 2 == 0){
+                sum += arr[i];
+            }
+        }
+
+        console.log("Tổng các phần tử chẵn", sum);
+        
+    </script>
+</body>
+</html>
