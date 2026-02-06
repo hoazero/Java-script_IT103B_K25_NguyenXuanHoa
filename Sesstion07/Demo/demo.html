@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //function declaration
+        sayHello(); // cơ chế hoisting đọc qua trước và ưu tiên chạy trc
+        function sayHello(userName = "hòa") {
+            //phần mã được thực thi khi gọi hàm
+            console.log("hello", userName);
+            return userName;
+        }
+        console.log(sayHello()); //lời gọi hàm
+
+        
+        //function expression - giới hạn phạm vi hoạt động, không có hoisting
+        let sayGoodbye = function(userName){
+            console.log("good bye");
+            return;
+        }
+        sayGoodbye("hảo"); // gọi hàm
+        
+
+        //Arrow function
+        let sayHi = () => {  // let sayHi = () => 1 - trả về 1
+            //giống các hàm trên
+        }
+
+
+    </script>
+</body>
+</html>

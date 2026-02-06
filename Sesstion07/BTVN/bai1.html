@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+   
+    let playerIds = [];
+    let playerPositions = [];
+    let positions = ["Thủ môn", "Hậu vệ", "Tiền vệ", "Tiền đạo"];
+    let n = +prompt("Có bao nhiêu cầu thủ cần nhập vào đội bóng?");
+    for (let i = 0; i < n; i++) {
+        console.log(`Nhập cầu thủ ${i + 1}:`);
+        let id;
+        while (true) {
+            id = prompt("Mã cầu thủ:");
+            if (!playerIds.includes(id)) {
+                break;
+            }
+            alert("Mã cầu thủ đã tồn tại, vui lòng nhập lại!");
+        }
+        playerIds.push(id);
+
+      
+        let pos;
+        while (true) {
+            pos = +prompt(
+                "Vị trí (1: Thủ môn 2: Hậu vệ 3: Tiền vệ 4: Tiền đạo):"
+            );
+            if (pos >= 1 && pos <= 4) {
+                break;
+            }
+            alert("Vị trí không hợp lệ, nhập lại!");
+        }
+        playerPositions.push(positions[pos - 1]);
+    }
+    function printTeamRoster() {
+        console.log(`Đội bóng hiện tại (${playerIds.length} cầu thủ):`);
+        for (let i = 0; i < playerIds.length; i++) {
+            console.log(`${i + 1}. ${playerIds[i]} - ${playerPositions[i]}`);
+        }
+    }
+    function findPlayersByPosition(position) {
+        let indexes = [];
+        for (let i = 0; i < playerPositions.length; i++) {
+            if (playerPositions[i] === position) {
+                indexes.push(i);
+            }
+        }
+        return indexes;
+    }
+    let searchPos = +prompt(
+        "Nhập vị trí cầu thủ muốn đếm số lượng (1: Thủ môn, 2: Hậu vệ, 3: Tiền vệ, 4: Tiền đạo):"
+    );
+
+    let positionName = positions[searchPos - 1];
+    let result = findPlayersByPosition(positionName);
+    printTeamRoster();
+    console.log(`Số cầu thủ ở vị trí ${positionName}: ${result.length}`);
+    console.log(`Các chỉ số cầu thủ ở vị trí ${positionName}: ${result.join(", ")}`);
+</script>
+</body>
+</html>
