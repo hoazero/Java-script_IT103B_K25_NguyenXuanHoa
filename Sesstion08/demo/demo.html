@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let students = [1,2,3,4,5];
+        let scores = ["H","o","A","E","X"];
+        //forEach duyệt qua mảng từ đầu đến cuối không dừng được 
+        students.forEach(function (element, index, arr) {
+            console.log("gia tri phan tu: ", element);
+            console.log("chi so phan tu: ", index);
+            console.log("mang ban dau: ", arr);
+        });
+
+        //map duyệt qua mảng và trả về mảng mới, độ dài và số lượng phần tử bằng mảng ban đầu
+        // tạo mảng mới dựa trên mảng ban đầu
+        let newScore = scores.map((element, index, arr) => {});
+        console.log(newScore);
+        
+        //filter (lọc) trả về một mảng mới từ phần tử của mảng cũ thỏa mãn điều kiện 
+        let temp = students.filter((element, index) => element > 2);
+        console.log(temp);
+
+        //every kiểm trả tất cả phần tử có điều kiện - tất cả có thỏa mãn không
+        //some kiểm trả có phần tử nào thỏa mãn đk không
+        //hai hàm trả về true false
+        let check = students.every((element) => element >=4); 
+        console.log(check);
+        let check2 = scores.some((element) => element === "H");
+        console.log(check2);
+
+        //find & findIndex tìm kiếm - trả về giá trị & chỉ số
+        let findStudent = students.find((element, index) => element === 9);
+        let findIndexStudent = students.findIndex((element, index) => element === 9);
+        console.log(findStudent);
+        console.log(findIndexStudent);
+
+        //reduce đóng gói mảng thành một giá trị duy nhất
+        let total = students.reduce((accumulative, element, index) => {
+            accumulative += element;
+            console.log("giá trị tích lũy sau phần tử thứ", index);
+            console.log(accumulative);
+            return accumulative;
+        }, 0) //accumulative - giá trị tích lũy, 0 - giá trị khởi đầu
+        console.log(total);
+    </script>
+</body>
+</html>

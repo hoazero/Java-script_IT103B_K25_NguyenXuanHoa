@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let names = ["iPhone 15", "Samsung S23", "Oppo Reno", "Xiaomi 13", "Nokia C20"];
+        let prices = [1200, 900, 450, 600, 80];
+        let stocks = [10, 5, 0, 8, 15];
+
+        while (true) {
+        let choice = prompt(`--- HỆ THỐNG QUẢN LÝ KHO HÀNG ---
+        1. Lọc sản phẩm cao cấp (>500)
+        2. Kiểm định trạng thái dữ liệu (Hết hàng/Giá sàn)
+        3. Phân tích giá trị vốn hóa (Tổng tài sản)
+        4. Triển khai chiến dịch chiết khấu (Giảm 10%)
+        5. Truy vấn sản phẩm theo từ khóa
+        6. Báo cáo tình trạng tồn kho
+        7. Thoát chương trình
+
+        Vui lòng nhập lựa chọn của bạn (1-7):`);
+
+        if (choice === "7" || choice === null) {
+            alert("Cảm ơn bạn đã sử dụng hệ thống!");
+            break;
+        }
+
+        switch (choice) {
+            case "1":
+            let caoCap = names.filter((_, i) => prices[i] > 500);
+            alert("Sản phẩm giá trị cao: " + caoCap.join(", "));
+            break;
+
+            case "2":
+            let hetHang = stocks.some(s => s === 0);
+            let giaSan = prices.every(p => p > 100);
+            alert(`- Có hàng hết trong kho: ${hetHang ? "Có" : "Không"}\n- Toàn bộ giá trên 100: ${giaSan ? "Đúng" : "Sai"}`);
+            break;
+
+            case "3":
+            let tongVon = prices.reduce((sum, p, i) => sum + (p * stocks[i]), 0);
+            alert(`Tổng giá trị vốn hóa kho hàng: ${tongVon} USD`);
+            break;
+
+            case "4":
+            prices.forEach((p, i) => prices[i] = p * 0.9);
+            alert("Đã cập nhật giảm giá 10% cho tất cả sản phẩm!");
+            break;
+
+            case "5":
+            let tuKhoa = prompt("Nhập từ khóa cần tìm:").toLowerCase();
+            let timKiem = names
+                .map((n, i) => `${n} - Giá: ${prices[i]} - Kho: ${stocks[i]}`)
+                .filter(item => item.toLowerCase().includes(tuKhoa));
+            alert(timKiem.length > 0 ? timKiem.join("\n") : "Không tìm thấy kết quả.");
+            break;
+
+            case "6":
+            let baoCao = names.map((n, i) => `${n}: ${stocks[i] > 0 ? "Còn hàng" : "Hết hàng"} (${stocks[i]})`);
+            alert("BÁO CÁO TỒN KHO:\n" + baoCao.join("\n"));
+            break;
+
+            default:
+            alert("Lựa chọn không hợp lệ, vui lòng nhập từ 1 đến 7.");
+        }
+        }
+    </script>
+</body>
+</html>

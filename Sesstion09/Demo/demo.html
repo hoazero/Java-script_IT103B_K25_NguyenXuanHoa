@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let names = ["hòa", "hoa", "hòe"];
+        let prices = [1500, 400, 2000];
+        let stocks = [2, 0, 1];
+        function putListNames(names, prices) {
+            return names.filter((element, index) => prices[index] > 500);
+        }
+        // let nameIn = names.filter((element, index) => prices[index] > 500);
+        console.log(putListNames(names, prices));
+        
+        function someStocks(stocks) {
+            let someStock;
+            someStock = stocks.some((val) => val === 0);
+            if(someStock){
+                console.log("có");
+            }else{
+                console.log("ko");
+            }
+            return someStock;
+        }
+        // console.log(someStocks(stocks));
+        someStocks(stocks);
+
+        function everyPrices(prices) {
+            let everyPrice;
+            everyPrice = stocks.every((val) => val === 0);
+            if(everyPrice){
+                console.log("có");
+            }else{
+                console.log("ko");
+            }
+            return everyPrice;
+        }
+        everyPrices(prices);
+
+        
+    </script>
+</body>
+</html>

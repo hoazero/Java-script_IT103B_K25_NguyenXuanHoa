@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const players = [
+        "Messi - Forward - 40 - 20 - 50",
+        "Ronaldo - Forward - 33 - 10 - 45",
+        "Neymar - Forward - 0 - 15 - 9",
+        "De Bruyne - Midfielder - 8 - 25 - 35",
+        "Van Dijk - Defender - 5 - 3 - 33"
+    ];
+
+    function reportByPosition(playersList) {
+        console.log("BÁO CÁO HIỆU SUẤT THEO VỊ TRÍ");
+
+        const positions = playersList
+            .map(p => p.split(" - ")[1])
+            .filter((pos, index, self) => self.indexOf(pos) === index);
+
+        positions.forEach(pos => {
+            const group = playersList
+                .map(p => p.split(" - "))
+                .filter(parts => parts[1] === pos);
+
+            const count = group.length;
+            const totalGoals = group.reduce((sum, p) => sum + parseInt(p[2]), 0);
+            const totalAssists = group.reduce((sum, p) => sum + parseInt(p[3]), 0);
+            const totalMatches = group.reduce((sum, p) => sum + parseInt(p[4]), 0);
+
+            const avgPerformance = totalMatches > 0 
+                ? ((totalGoals + totalAssists) / totalMatches).toFixed(2) 
+                : "0.00";
+
+            console.log(`${pos}:`);
+            console.log(`- Số cầu thủ: ${count}`);
+            console.log(`- Tổng bàn thắng: ${totalGoals}`);
+            console.log(`- Tổng kiến tạo: ${totalAssists}`);
+            console.log(`- Tổng số trận: ${totalMatches}`);
+            console.log(`- Trung bình hiệu suất/trận: ${avgPerformance}\n`);
+        });
+
+        const totalTeamGoals = playersList
+            .map(p => parseInt(p.split(" - ")[2]))
+            .reduce((sum, g) => sum + g, 0);
+
+        console.log("-----------------------");
+        console.log(`Tổng bàn thắng toàn đội : ${totalTeamGoals}`);
+    }
+
+    reportByPosition(players);
+    </script>
+</body>
+</html>
