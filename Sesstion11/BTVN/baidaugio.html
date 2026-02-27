@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let students = [
+            { id: 1, name: "Nguyễn Văn A", score: 8.5, gender: "Nam" },
+            { id: 2, name: "Trân Thị B", score: 4.2, gender: "Nữ" },
+            { id: 3, name: "Lê Văn C", score: 9.0, gender: "Nam" },
+            { id: 4, name: "Phạm Thị D", score: 5.5, gender: "Nữ" },
+            { id: 5, name: "Hoàng Văn E", score: 3.8, gender: "Nam" }
+        ];
+
+        let listPro = students.map(function(student) {
+            if(student.score >= 8){
+                console.log(student.name);
+                return student.name
+            }
+        });
+        
+        let osoiStudent = students.some((student) => student.score < 4);
+        if(osoiStudent){
+            console.log("Có sinh viên yếu");
+        }else{
+            console.log("Không có sinh viên yếu");
+        }
+
+        let studentLabels = students.map(function(student) {
+            let listStudent = `Tên: [${student.name}] - Điểm: [${student.score}]`
+            return listStudent;
+        })
+        console.log(studentLabels);
+        
+    </script>
+</body>
+</html>

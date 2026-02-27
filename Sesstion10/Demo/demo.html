@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let myObj = { // kiểu dữ liệu tập hợp các thành phần trong một đối tượng
+            key: "value",
+            keys: "value2"
+        }
+
+        let test = prompt("nhập vào bài test");
+        let number = prompt("nhập vào bài test");
+        let student = {
+            id: 1,
+            firstName: "Nguyen",
+            lastName: "Hoa",
+            test,
+            hand: number,
+        }
+
+        //read
+        console.log(student.firstName);
+        
+        //create
+        student.age = 19;
+        let input = "age";
+        console.log(student[input]);  // . là truy cập trực tiếp đối tượng của obj, [] là truy cập thông qua 1 biến
+
+        //update
+        student.age = 30;
+        console.log(student);
+
+        //delete
+        delete student.age;
+        console.log(student);
+    </script>
+</body>
+</html>

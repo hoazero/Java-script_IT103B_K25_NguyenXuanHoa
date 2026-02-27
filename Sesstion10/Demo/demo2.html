@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let students = [
+            {
+                id: 1,
+                name: "Hòa",
+            },
+
+            {
+                id: 2,
+                name: "Hòe"
+            }
+        ]
+
+        let id = +prompt("nhập id");
+        let studentName = prompt("nhập tên sinh viên");
+        let newStudent = {
+            id: id,
+            name: studentName
+        }
+
+        students.push(newStudent);
+        console.log(students);
+        
+        let findName  = prompt("nhập tên cần tìm");
+        let findStudent = students.find(student => student.name === findName)
+    </script>
+</body>
+</html>
