@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let students = [
+            { id: "1", name: "Nguyen Van A", age: 20, gpa: 8.5, status: "active", createdAt: Date.now(), updatedAt: Date.now(), deletedAt: null },
+            { id: "2", name: "Tran Thi B", age: 18, gpa: 2.5, status: "active", createdAt: Date.now(), updatedAt: Date.now(), deletedAt: null }
+        ];
+
+        function createStudent(){
+            let id = prompt("Nhập ID sinh viên");
+            let name = prompt("Nhập tên sinh viên");
+            let age = +prompt("Nhập tuổi (16-60)");
+            let gpa = +prompt("Nhập điểm gpa (0-10)");
+            let status = prompt("Nhập status (active/inactive)");
+            if(id && name && age >= 16 && age <=60 && gpa >= 0 && gpa <= 10 ){
+                let student = {
+                    id: id,
+                    name: name,
+                    age: age,
+                    gpa: gpa,
+                    status: status,
+                    createdAt: Date.now(),
+                    updatedAt: Date.now(),
+                    deletedAt: null
+                };
+                students.push(student);
+                alert("Thêm thành công");
+            }else{
+                console.log("Dữ liệu nhập không hợp lệ");
+            }
+        }
+
+        function updateStudent(){
+            let id = prompt ("Nhập ID cần sửa");
+            let stu = students.find(item => item.id === id);
+            if(stu){
+                let newName = prompt("Nhập tên mới", stu.name);
+                let newGpa = +prompt("Nhập Gpa mới",stu.gpa);
+                if (newName) stu.name = newName;
+                if(newGpa !== " ") stu.gpa = +newGpa;
+                stu.updatedAt = Date.now();
+                console.log("Cập nhật thành công");
+            }else{
+                console.log("Không tìm thấy sinh viên");
+            }
+        }
+
+        function softDeleteStudent(){
+            let id = prompt("Nhập ID sinh viên cần xóa");
+            let s = students.find(item => item.id === id);
+
+            if(s){
+                let isConfirm = confirm("Có muốn xóa tạm thời không");
+                if(isConfirm === true){
+                    s.status = "inactive";
+                    s.deletedAt = Date.now();
+                    console.log("Đã chuyển sang active");
+                }else{
+                    console.log("Đã hủy xóa")
+                }
+            }else{
+                console.log("Không tìm thấy ID");
+            }
+        }
+
+        function restoreStudent(){
+            let id = +prompt("Nhập ID cần khôi phục");
+            let s = students.find(item => item.id === id && item.status === "inactive");
+            if(s){
+                s.status = "active";
+                s.deleteAt = null;
+                s.updatedAt = Date.now();
+                console.log("Khôi phục thành công");
+            }else{
+                console.log("Không thấy sinh viên đang xóa tạm thời");
+            }
+        }
+
+        function viewStudents() {
+            console.clear();
+            console.log("--- DANH SÁCH SINH VIÊN ---");
+            console.table(students);
+            alert("Đã in danh sách ra Console (F12). Hãy mở Console để xem!");
+        }
+
+        function analytics() {
+            let active = students.filter(s => s.status === "active").length;
+            alert(`Tổng số: ${students.length}\nĐang học: ${active}\nĐã xóa: ${students.length - active}`);
+        }
+
+        function start() {
+            let choice;
+            do {
+                choice = prompt(`
+==== STUDENT MANAGER ADVANCED ====
+1. Create Student
+2. Update Student
+3. Soft Delete Student
+4. Restore Student
+5. View Students
+6. Analytics Dashboard
+7. Exit`);
+            switch (choice) {
+                case "1": createStudent(); break;
+                case "2": updateStudent(); break;
+                case "3": softDeleteStudent(); break;
+                case "4": restoreStudent(); break;
+                case "5": viewStudents(); break;
+                case "6": analytics(); break;
+                case "7": alert("Tạm biệt!"); break;
+                default: alert("Lựa chọn không hợp lệ, thử lại nhé!");
+            }
+        } while (choice !== "7");
+    }
+    start();
+    </script>
+</body>
+</html>

@@ -30,6 +30,259 @@
             //giống các hàm trên
         }
 
+        // let id = prompt("Nhập ID sinh viên cần cập nhật:");
+
+        // let student = students.find(s => s.id === id);
+
+        // if (!student) {
+        //     console.log("Không tìm thấy sinh viên");
+        //     return;
+        // }
+
+        // let newName = prompt("Nhập tên mới (Enter để bỏ qua):");
+        // let newAge = prompt("Nhập tuổi mới (Enter để bỏ qua):");
+        // let newGpa = prompt("Nhập GPA mới (Enter để bỏ qua):");
+        // let newStatus = prompt('Nhập status mới (active/inactive) (Enter để bỏ qua):');
+
+        // if (newName !== "") {
+        //     student.name = newName;
+        // }
+
+        // let confirmDelete = confirm("Bạn có chắc muốn xóa?");
+
+        // if (!confirmDelete) {
+        //     console.log("Đã hủy xóa");
+        //     return;
+        // }
+
+        // student.status = "inactive";
+        // student.deletedAt = Date.now();
+        // student.updatedAt = Date.now();
+
+        // if (student.deletedAt === null) {
+        //     console.log("Sinh viên chưa bị xóa");
+        //     return;
+        // }
+
+        // student.status = "active";
+        // student.deletedAt = null;
+        // student.updatedAt = Date.now();
+
+
+        // let {
+        //     search = "",
+        //     status = "all",
+        //     sort = "asc",
+        //     page = 1,
+        //     limit = 5
+        // } = options;
+
+        // // BƯỚC 1: Clone dữ liệu (QUAN TRỌNG)
+        // let result = [...students];
+
+        // // BƯỚC 2: SEARCH
+        // if (search) {
+        //     result = result.filter(student =>
+        //         student.name.toLowerCase().includes(search.toLowerCase())
+        //     );
+        // }
+
+        // // BƯỚC 3: FILTER
+        // if (status !== "all") {
+        //     result = result.filter(student =>
+        //         student.status === status
+        //     );
+        // }
+
+        // // BƯỚC 4: SORT
+        // result.sort((a, b) => {
+        //     return sort === "asc"
+        //         ? a.gpa - b.gpa
+        //         : b.gpa - a.gpa;
+        // });
+
+        // // BƯỚC 5: PAGINATION
+        // let totalRecords = result.length;
+        // let totalPages = Math.ceil(totalRecords / limit);
+
+        // if (page < 1) page = 1;
+        // if (page > totalPages) page = totalPages;
+
+        // let start = (page - 1) * limit;
+        // let end = start + limit;
+
+        // let pageData = result.slice(start, end);
+
+        // // HIỂN THỊ
+        // console.log(`Trang: ${page}/${totalPages}`);
+        // console.log(`Tổng bản ghi: ${totalRecords}`);
+
+        // console.table(pageData);
+
+        // return {
+        //     data: pageData,
+        //     currentPage: page,
+        //     totalPages,
+        //     totalRecords
+        // };
+
+
+        // //
+        // function dashboardOverview(students){
+        //     let result = students.reduce((acc, student) => {
+        //         acc.total++;
+
+        //         if(student.status === "active"){
+        //             acc.active++;
+        //         }else{
+        //             acc.inactive++;
+        //         }
+
+        //         return acc;
+        //     }, {
+        //         total:0,
+        //         active:0,
+        //         inactive:0
+        //     });
+
+        //     result.activePercent = ((result.active/result.total)*100).toFixed(2);
+        //     result.inactivePercent = ((result.inactive/result.total)*100).toFixed(2);
+
+        //     console.log("=== DASHBOARD OVERVIEW ===");
+        //     console.log(result);
+
+        //     return result;
+        // }
+
+        // //
+        // function gpaMetrics(students){
+        //     let result = students.reduce((acc, student)=>{
+        //         acc.totalGpa += student.gpa;
+        //         acc.count++;
+
+        //         if(student.status === "active"){
+        //             acc.activeGpa += student.gpa;
+        //             acc.activeCount++;
+        //         }else{
+        //             acc.inactiveGpa += student.gpa;
+        //             acc.inactiveCount++;
+        //         }
+        //         return acc;
+        //     },{
+        //         totalGpa:0,
+        //         count:0,
+        //         activeGpa:0,
+        //         activeCount:0,
+        //         inactiveGpa:0,
+        //         inactiveCount:0
+        //     });
+        //     result.avgGpa = (result.totalGpa/result.count).toFixed(2);
+
+        //     result.activeAvg =
+        //         result.activeCount ?
+        //         (result.activeGpa/result.activeCount).toFixed(2)
+        //         : 0;
+
+        //     result.inactiveAvg =
+        //         result.inactiveCount ?
+        //         (result.inactiveGpa/result.inactiveCount).toFixed(2)
+        //         : 0;
+
+        //     console.log("=== GPA METRICS ===");
+        //     console.log(result);
+        //     return result;
+        // }
+
+        // //
+        // function top5Gpa(students){
+        //     let result = students
+        //         .reduce((acc, student)=>{
+        //             acc.push(student);
+        //             return acc;
+        //         },[])
+        //         .sort((a,b)=>b.gpa-a.gpa)
+        //         .slice(0,5);
+
+        //     console.log("=== TOP 5 GPA ===");
+        //     console.table(result);
+        //     return result;
+        // }
+
+        // function top5Youngest(students){
+        //     let result = students
+        //         .reduce((acc, student)=>{
+        //             acc.push(student);
+        //             return acc;
+        //         },[])
+        //         .sort((a,b)=>a.age-b.age)
+        //         .slice(0,5);
+
+        //     console.log("=== TOP 5 YOUNGEST ===");
+        //     console.table(result);
+        //     return result;
+        // }
+
+        // //
+        // function riskReport(students){
+        //     let result = students.reduce((acc, student)=>{
+
+        //         if(student.gpa === 0){
+        //             acc.zeroGpa.push(student);
+        //         }
+
+        //         if(student.gpa < 3){
+        //             acc.lowGpa.push(student);
+        //         }
+
+        //         if(student.gpa < 3){
+        //             acc.totalRisk++;
+        //         }
+        //         return acc;
+        //     },{
+        //         zeroGpa:[],
+        //         lowGpa:[],
+        //         totalRisk:0
+        //     });
+        //     console.log("=== RISK REPORT ===");
+        //     console.log("GPA = 0:");
+        //     console.table(result.zeroGpa);
+        //     console.log("GPA < 3:");
+        //     console.table(result.lowGpa);
+        //     console.log("Total Risk:", result.totalRisk);
+        //     return result;
+        // }
+
+
+        // //
+        // function academicDistribution(students){
+        //     let result = students.reduce((acc, student)=>{
+        //         if(student.gpa < 3){
+        //             acc.weak++;
+        //         }
+        //         else if(student.gpa < 5){
+        //             acc.average++;
+        //         }
+        //         else if(student.gpa < 7){
+        //             acc.good++;
+        //         }
+        //         else if(student.gpa < 9){
+        //             acc.excellent++;
+        //         }
+        //         else{
+        //             acc.outstanding++;
+        //         }
+        //         return acc;
+        //     },{
+        //         weak:0,
+        //         average:0,
+        //         good:0,
+        //         excellent:0,
+        //         outstanding:0
+        //     });
+        //     console.log("=== ACADEMIC DISTRIBUTION ===");
+        //     console.log(result);
+        //     return result;
+        // }
     </script>
 </body>
 </html>

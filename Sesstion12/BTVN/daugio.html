@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let students = [
+            { id: 1, name: "Nguyễn Văn A", score: 8.5, gender: "Nam" },
+            { id: 2, name: "Trân Thị B", score: 4.2, gender: "Nữ" },
+            { id: 3, name: "Lê Văn C", score: 9.0, gender: "Nam" },
+            { id: 4, name: "Phạm Thị D", score: 5.5, gender: "Nữ" },
+            { id: 5, name: "Hoàng Văn E", score: 3.8, gender: "Nam" }
+        ];
+
+        let arr1 = students.filter((stu) => stu.gender === "Nữ")
+        .sort((a,b) => b.score - a.score)
+        .map((stu) => stu.name) ;
+        console.log(arr1);
+        
+        let arr2 = students.filter((stu) => stu.score >= 5)
+        .map((stu) => stu.name);
+        console.log(arr2);
+        
+        let result = students.reduce(function(acc, stu){
+            if(stu.gender === "Nam"){
+                acc.total += stu.score;
+                acc.count++;
+            }
+            return acc;
+        }, {total: 0, count: 0});
+
+        let avg = result.total / result.count;
+        console.log(avg.toFixed(2));
+        
+        
+        
+    </script>
+</body>
+</html>

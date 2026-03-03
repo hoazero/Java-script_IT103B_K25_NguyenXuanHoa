@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let students = [
+            { id: "S01", name: "Nguyen Van A", age: 20, gpa: 8.5, status: "active" },
+            { id: "S02", name: "Tran Thi B", age: 17, gpa: 7.2, status: "active" },
+            { id: "S03", name: "Le Van C", age: 19, gpa: 9.0, status: "inactive" }
+        ];
+
+        function softDeleteStudent(students) {
+            let id = +prompt("Nhap id can tim");
+            let student = students.find(stu => id === stu.id);
+            if(student){
+                let result = confirm("Xác nhận xóa");
+                if(result){
+                    student.status = "inactive";
+                    student.deletedAt = new Date();
+                    console.log("Đã xóa");
+                }else{
+                    console.log("đã hủy");
+                }
+            }else{
+                console.log("ko tìm thấy");
+            }
+        }
+
+        softDeleteStudent(students);
+
+        let exist = students.find(s => s.id === id);
+            if (exist) {
+                console.log("ID đã tồn tại");
+                return;
+            }
+            
+        let student = {
+            id,
+            name,
+            age,
+            gpa,
+            status,
+            createdAt: Date.now(),
+            updatedAt: Date.now(),
+            deletedAt: null
+        };
+
+        students.push(student);
+
+        switch (key) {
+            case value:
+                
+                break;
+        
+            default:
+                break;
+        }
+    </script>
+</body>
+</html>
