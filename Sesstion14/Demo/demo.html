@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        form{
+            margin: 20px;
+            width: 260px;
+            text-align: center;
+        }
+
+        label{
+            margin-right: 5px;
+        }
+
+        .submit-btn{
+            margin-top: 10px;
+            padding: 5px 10px;
+        }
+
+        .bg-blue{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <form action="" id="inputForm">
+        <h3 style="display: none;">InputForm</h3>
+        <label for="fullName" class="name-label">Họ và tên</label>
+        <input type="text" id="fullName">
+        <br>
+        <input type="submit" value="Submit" class="submit-btn">
+    </form>
+    
+    <script>
+        //Truy cập phần tử qua DOM
+        let inputElement = document.getElementById("fullName");
+        let labelElement = document.getElementsByClassName("name-label");
+
+        // document.getElementsByTagName(""); // nhận vào tên thẻ
+
+        // document.querySelector(".name-label") // lấy theo bộ chọn css
+        // document.querySelectorAll()
+
+        console.log(inputElement);
+        console.log(labelElement[0]);
+        
+        //Lấy nội dung bên trong phần tử
+        let inputForm = document.getElementById("inputForm");
+        // inputForm.innerHTML = "<h1>Đây là nội dung html đc thêm từ js nội dung này sẽ ghi đè toàn bộ nội dung html cũ</h1>"
+
+        // inputForm.innerHTML += "<h3>Đây là nội dung html đc thêm từ js nội dung này sẽ nối thêm vào nội dung html cũ</h3>"
+
+        //Nội dung html bên trong phần tử
+        console.log(inputForm.innerHTML);
+
+        //Nội dung text bên trong phần tử 
+        console.log(inputForm.textContent);// lấy toàn bộ text trong file html
+        
+        console.log(inputForm.innerText);// Chỉ lấy text đc hiển thị trên giao diện
+        
+        //Lấy thuộc tính bên trong phần tử
+        console.log(inputForm.id);
+        console.log(inputElement.value);
+        
+        //thêm class cho phần tử
+        inputForm.classList.add("bg-blue");
+        //xóa class khỏi phần tử
+        inputForm.classList.remove("bg-blue");
+        //nếu chưa có class thì thêm, có thì xóa 
+        inputForm.classList.toggle("bg-blue");
+
+        // console.log(inputForm.children);
+        
+        
+
+    </script>
+</body>
+</html>

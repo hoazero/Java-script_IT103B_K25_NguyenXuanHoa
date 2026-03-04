@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>DOM Methods</h1>
+    <script>
+        //Tạo phần tử html
+        let heagerElement = document.createElement("h1");
+        let body = document.getElementsByTagName("body")
+        //Thêm nội dung cho phần tử vừa tạo
+        heagerElement.innerText = "Nội dung bên trong thẻ vừa tạo";
+
+        console.log(heagerElement);
+        //Thêm phần tử vừa tạo vào cuối thẻ body
+        body[0].appendChild(heagerElement);
+
+        
+    </script>
+</body>
+</html>

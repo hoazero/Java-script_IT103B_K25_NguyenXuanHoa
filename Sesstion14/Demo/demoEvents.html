@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        form{
+            margin: 20px;
+            width: 260px;
+            text-align: center;
+        }
+
+        label{
+            margin-right: 5px;
+        }
+
+        .submit-btn{
+            margin-top: 10px;
+            padding: 5px 10px;
+        }
+
+        .bg-blue{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <form action="" id="inputForm">
+        <!-- <h3 onclick="handleClick()">InputForm</h3> -->
+        <h3 onclick="handleClick()">InputForm</h3>
+        <label for="fullName" class="name-label">Họ và tên</label>
+        <input type="text" id="fullName">
+        <br>
+        <input type="submit" value="Submit" class="submit-btn">
+    </form>
+
+    <script>
+        function handleClick() {
+            // console.log("người dùng click vào thẻ h3");
+            let h3 = document.getElementById("fullName");
+            h3.classList.toggle("bg-blue");
+        }
+
+        let h3 = document.getElementsByTagName("h3")[0];
+        // h3.onclick = handleClick;
+
+        // h3.addEventListener("click", (e) => {
+        //     console.log(e.target);           
+        // })
+
+        let inputElement = document.getElementById("fullName");
+        let inputValue;
+        inputElement.addEventListener("change", () => {
+            inputValue = inputElement.value;
+            // console.log(input.value);
+        })
+
+        let form = document.getElementById("inputForm");
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+        })
+    </script>
+</body>
+</html>
