@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Đăng Nhập</h1>
+    <form action="">
+        <label for="">Email</label><br>
+        <input type="email" id="emailId"><br>
+
+        <label for="">Mật khẩu</label><br>
+        <input type="password" id="passId"><br>
+
+        <input type="submit" value="Đăng nhập" id="subId"><br>
+
+    </form>
+    <script>
+        let inputIdEmail = document.getElementById("emailId");
+        let inputIdPass = document.getElementById("passId");
+        let inputIdSub = document.getElementById("subId");
+        let user = [];
+        function clickSub() {
+            let newEmail = inputIdEmail.value
+            // let  = 
+            let newUser = {
+                email: inputIdEmail,
+                password: inputIdPass,
+            }
+
+            user.push(newUser);
+
+        }
+
+        
+        inputIdSub.onclick = clickSub;
+        // user.push(newUser);
+        console.log(user);
+        
+    </script>
+</body>
+</html>

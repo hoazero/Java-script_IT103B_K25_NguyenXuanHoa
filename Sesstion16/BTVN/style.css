@@ -1,0 +1,261 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f4f6f8;
+}
+
+/* ================= CONTAINER ================= */
+
+.container {
+    max-width: 1050px;
+    margin: 30px auto;
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+}
+
+/* ================= HEADER ================= */
+
+header {
+    background: #43A047;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    padding: 28px;
+}
+
+/* ================= FORM SECTION ================= */
+
+.form-section {
+    background: #EEF3E6;
+    padding: 30px 35px;
+}
+
+.form-section h2 {
+    color: #2E7D32;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+/* FLEX 2 CỘT */
+.form-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form-grid > div {
+    width: 48%;
+    margin-bottom: 18px;
+}
+
+/* LABEL */
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+label span {
+    color: red;
+}
+
+/* INPUT */
+
+input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 2px solid #C5E1A5;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #43A047;
+    box-shadow: 0 0 6px rgba(67,160,71,0.3);
+}
+
+/* BUTTON */
+
+.button-group {
+    margin-top: 10px;
+}
+
+#submitBtn {
+    width: 100%;
+    background: #66BB6A;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#submitBtn:hover {
+    background: #4CAF50;
+}
+
+.cancel-btn {
+    margin-top: 10px;
+    width: 100%;
+    background: #BDBDBD;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.cancel-btn:hover {
+    background: #9E9E9E;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ================= LIST SECTION ================= */
+
+.list-section {
+    padding: 30px 35px;
+}
+
+.list-section h2 {
+    color: #2E7D32;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+/* TABLE WRAPPER */
+
+.table-wrapper {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #E0E0E0;
+}
+
+/* TABLE */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* THEAD */
+
+thead {
+    background: #43A047;
+    color: white;
+}
+
+th {
+    padding: 14px 10px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* TBODY */
+
+td {
+    padding: 14px 10px;
+    font-size: 14px;
+    text-align: center;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+tbody tr:hover {
+    background: #F1F8E9;
+}
+
+/* ACTION BUTTONS */
+
+.edit-btn {
+    background: #42A5F5;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: 0.2s;
+}
+
+.edit-btn:hover {
+    background: #2196F3;
+}
+
+.delete-btn {
+    background: #EF5350;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.delete-btn:hover {
+    background: #E53935;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    background: #EEF3E6;
+    text-align: center;
+    padding: 20px;
+    font-size: 15px;
+}
+
+#totalEmployees {
+    font-weight: bold;
+    font-size: 18px;
+    color: #43A047;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+    .form-grid > div {
+        width: 100%;
+    }
+
+    table {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    th:first-child,
+    td:first-child {
+        display: none;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        width: 100%;
+        margin-bottom: 6px;
+    }
+}
