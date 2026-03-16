@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Công việc chuẩn bị Tết</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    background:#f2f2f2;
+    display:flex;
+    justify-content:center;
+    margin-top:40px;
+}
+
+.container{
+    width:380px;
+    background:white;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.header{
+    background:#d32f2f;
+    color:white;
+    text-align:center;
+    padding:15px;
+    border-radius:10px 10px 0 0;
+}
+
+.todo{
+    margin:8px 12px;
+    padding:12px;
+    border-radius:6px;
+    background:#f3e6c9;
+    border-left:5px solid orange;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.todo.done{
+    background:#c8e6c9;
+    border-left:5px solid green;
+    text-decoration:line-through;
+}
+
+.icon{
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    border:2px solid #aaa;
+}
+
+.todo.done .icon{
+    background:green;
+}
+
+.footer{
+    text-align:center;
+    font-size:12px;
+    color:#777;
+    padding:10px;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="header">
+<h3>Công việc chuẩn bị Tết</h3>
+<p>Click để đánh dấu hoàn thành</p>
+</div>
+
+<div id="todoList"></div>
+
+<div class="footer">
+Trạng thái được lưu tự động vào localStorage
+</div>
+
+</div>
+
+<script>
+const initialTodos = [
+ { id:1, task:"Mua bánh chưng", done:false },
+ { id:2, task:"Dọn nhà đón Tết", done:false },
+ { id:3, task:"Gói bánh chưng", done:false },
+ { id:4, task:"Trang trí nhà cửa bằng hoa mai, hoa đào", done:false },
+ { id:5, task:"Mua phong bao lì xì", done:false },
+ { id:6, task:"Chuẩn bị mâm ngũ quả", done:false }
+];
+
+// lấy dữ liệu
+function getTodos(){
+
+    let data = localStorage.getItem("myTodos");
+
+    if(data){
+        return JSON.parse(data);
+    }else{
+        localStorage.setItem("myTodos", JSON.stringify(initialTodos));
+        return initialTodos;
+    }
+
+}
+
+// lưu dữ liệu
+function saveTodos(todos){
+    localStorage.setItem("myTodos", JSON.stringify(todos));
+}
+
+// hiển thị danh sách
+function render(){
+
+    let todos = getTodos();
+
+    let html = "";
+
+    todos.forEach(todo => {
+
+        html += `
+        <div class="todo ${todo.done ? "done":""}" onclick="toggleTodo(${todo.id})">
+            <div class="icon"></div>
+            <span>${todo.task}</span>
+        </div>
+        `;
+
+    });
+
+    document.getElementById("todoList").innerHTML = html;
+
+}
+function toggleTodo(id){
+
+    let todos = getTodos();
+
+    todos = todos.map(todo => {
+
+        if(todo.id === id){
+            todo.done = !todo.done;
+        }
+
+        return todo;
+
+    });
+
+    saveTodos(todos);
+
+    render();
+
+}
+render();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+    <meta charset="UTF-8">
+    <title>Chuẩn bị Tết</title>
+    <style>
+    body{
+        font-family: Arial;
+        background:#f5f5f5;
+        display:flex;
+        justify-content:center;
+        margin-top:50px;
+    }
+    .container{
+        width:400px;
+        background:white;
+        border-radius:10px;
+        box-shadow:0 0 10px rgba(0,0,0,0.1);
+    }
+    .header{
+        background:#d32f2f;
+        color:white;
+        text-align:center;
+        padding:15px;
+        border-radius:10px 10px 0 0;
+    }
+    .todo{
+        background:#f3e6c9;
+        margin:10px;
+        padding:10px;
+        border-radius:20px;
+        display:flex;
+        justify-content:space-between;
+        border-left:3px solid orange;
+        transition: 0.25s;
+        cursor: pointer;
+    }
+    .todo:hover{
+        transform: translateY(-4px);
+        box-shadow:0 6px 12px rgba(0,0,0,0.2);
+    }
+    .status{
+        color:#888;
+        font-size:14px;
+    }
+    .footer{
+        text-align:center;
+        font-size:12px;
+        color:#888;
+        padding:10px;
+    }
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h3>Chuẩn bị Tết Nguyên Đán</h3>
+                <p>Danh sách việc cần làm</p>
+            </div>
+            <div id="todoList"></div>
+            <hr/>
+            <div class="footer">
+            Đã lưu vào localStorage lần đầu tiên • Refresh trang để kiểm tra
+            </div>
+        </div>
+        <script>
+            const todos = [
+                { id:1, task:"Mua bánh chưng", done:false },
+                { id:2, task:"Dọn nhà đón Tết", done:false },
+                { id:3, task:"Gói bánh chưng", done:false },
+                { id:4, task:"Trang trí nhà cửa", done:false }
+            ];
+
+            if(!localStorage.getItem("myTodos")){
+                localStorage.setItem("myTodos", JSON.stringify(todos));
+            }
+            let data = JSON.parse(localStorage.getItem("myTodos"));
+            let html = "";
+            data.forEach((todo)=>{
+                html += `<div class="todo">
+                    <span>${todo.task}</span>
+                    <span class="status">Chưa làm</span>
+                </div>`;
+            });
+            document.getElementById("todoList").innerHTML = html;
+        </script>
+    </body>
+</html>

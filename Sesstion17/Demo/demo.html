@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Danh Sách Sản Phẩm Chợ Tết</h1>
+    <ul id="product-list">
+        
+    </ul>
+    <form id="product-form">
+        <input type="text" id="product-name" placeholder="Tên sản phẩm">
+        <input type="number" id="product-price" placeholder="Giá (VND)">
+        <button type="submit" onclick="handleAddProduct(event)">Thêm Sản Phẩm</button>
+    </form>
+
+    <script>
+        
+        let products = JSON.parse(localStorage.getItem("products")) || []; // đồng bộ thay đổi
+        
+        localStorage.setItem("products", JSON.stringify(products)); // lưu lại thay đổi vào kho
+        //localStorage.removeItem(""); // xóa 1 key
+        //localStorage.clear(); // xóa toàn bộ
+        function renderproducts(){
+            let productListElement = document.getElementById("product-list");
+            productListElement.innerHTML = ""; // trước khi duyệt thì xóa trắng dữ liệu để duyệt lại từ đầu
+            products.forEach((product, index, array)=>{
+                
+                productListElement.innerHTML += `<li>
+                <div class="product">
+                    <p>Tên sản phẩm: ${product.name}</p>
+                    <p>Giá sản phẩm: ${product.price}</p>
+                    <button>sửa</button>
+                    <button onclick ="handleDeleteProduct(${product.id})">xóa</button>
+                </div>
+            </li>`;
+            })
+        }
+        
+        function handleAddProduct(event) {
+            event.preventDefault(); // ngăn chặn load lại trang
+            let nameInputElement = document.getElementById("product-name");
+            let priceInputElement = document.getElementById("product-price");
+            let newProductName = nameInputElement.value;
+            let newProductPrice = +priceInputElement.value;
+            let newProduct = {
+                id: products.length != 0 ? products[products.length - 1].id + 1 : 1,
+                name: newProductName,
+                price: newProductPrice,
+            }
+            products.push(newProduct);
+            localStorage.setItem("products", JSON.stringify(products)); //cập nhật lại thay đổi vào kho
+            renderproducts();  // đọc cái mới
+            // console.log(newProduct);  
+        }
+
+        function handleDeleteProduct(id) {
+            
+            products = products.filter((product)=>{
+                return product.id !== id
+            });
+            localStorage.setItem("products", JSON.stringify(products));
+            renderproducts();
+        }
+        
+        renderproducts(); // đọc toàn bộ
+
+
+    </script>
+</body>
+</html>
