@@ -3,7 +3,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quản Lý Sản Phẩm</title>
-    <link rel="stylesheet" href="product-management.css" />
+    <link rel="stylesheet" href="style.css"/>
   </head>
   <body>
     <div class="container">
@@ -126,8 +126,46 @@
       <!-- Product List Section -->
       <section class="list-section">
         <h2>Danh Sách Sản Phẩm</h2>
-        <div class="table-container" id="table-container">
-          
+        <div class="table-container">
+          <table id="productTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Danh Mục</th>
+                <th>Giá</th>
+                <th>Số Lượng</th>
+                <th>Mô Tả</th>
+                <th>Thao Tác</th>
+              </tr>
+            </thead>
+            <tbody id="productTableBody">
+              <tr>
+                <td>1</td>
+                <td><strong>Cá chuối</strong></td>
+                <td>Điện tử</td>
+                <td class="price">23.000&nbsp;₫</td>
+                <td class="quantity">12</td>
+                <td class="description">Sekiro</td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="btn-edit" onclick="editProduct(1)">
+                      ✏️ Sửa
+                    </button>
+                    <button class="btn-delete" onclick="deleteProduct(1)">
+                      🗑️ Xóa
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="empty-state" id="emptyState">
+            <div class="empty-state-icon">📦</div>
+            <div class="empty-state-text">
+              Chưa có sản phẩm nào. Hãy thêm sản phẩm mới!
+            </div>
+          </div>
         </div>
       </section>
 
@@ -135,18 +173,18 @@
       <footer class="footer">
         <div class="stats">
           <span class="stat-item">
-            Tổng sản phẩm: <strong id="totalProducts">0</strong>
+            Tổng sản phẩm: <strong id="totalProducts">1</strong>
           </span>
           <span class="stat-item">
-            Tổng giá trị: <strong id="totalValue">0&nbsp;₫</strong>
+            Tổng giá trị: <strong id="totalValue">276.000&nbsp;₫</strong>
           </span>
           <span class="stat-item">
-            Tổng số lượng: <strong id="totalQuantity">0</strong>
+            Tổng số lượng: <strong id="totalQuantity">12</strong>
           </span>
         </div>
       </footer>
     </div>
 
-    <script src="product-management.js"></script>
+    <script src="demo.js"></script>
   </body>
 </html>
