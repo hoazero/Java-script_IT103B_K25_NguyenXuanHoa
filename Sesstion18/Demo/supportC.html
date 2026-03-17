@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let students = [
+            {id: 1, name: "Hòa", email: "hoa@gmail.com", score: 9},
+            {id: 2, name: "Hải", email: "hai@gmail.com", score: 8},
+        ];
+
+        //id: ,Tên: ,email: ,score: .
+        function printStudent() {
+            // students = [];
+            students.forEach((student) => {
+                console.log(`id: ${student.id},Tên: ${student.name},email: ${student.email},score: ${student.score}.`);
+                
+            })
+        }
+
+        function addStudent() {
+            let name = prompt("nhập tên sv");
+            let email = prompt("nhập email sv");
+            let score = +prompt("nhập điểm sv");
+
+            let newStudent = {
+                id: students.length !== 0 ? students[students.length - 1].id + 1 : 1,
+                name: name,
+                email: email,
+                score: +score,
+            }
+
+            students.push(newStudent);
+            printStudent();
+        }
+
+        function deleteStudent() {
+            let id = +prompt("nhập id muốn xóa");
+            let findStuIndex = students.findIndex((student) => id === student.id);
+
+            if(findStuIndex != -1){
+                students.splice(findStuIndex, 1);
+            }else{
+                console.log("ko có sv với id vừa nhập", id);
+            }
+
+            printStudent();
+        }
+
+        function editStudent() {
+            let updateId = +prompt("Nhập id cần sửa");
+            let findId = students.findIndex((stu) => stu.id === updateId);
+
+            if(findId != -1){
+                let newName = prompt("nhập tên sinh viên mới", students[findId].name);
+                let newEmail = prompt("nhập email mới", students[findId].email);
+                let newScore = prompt("nhập score mới", students[findId].score);
+
+                let newDataStu = {
+                    id: updateId,
+                    name: newName,
+                    email: newEmail,
+                    score: newScore,
+                }
+
+                students[findId] = newDataStu;
+            }else{
+                console.log("ko có sinh viên nào có id: ", updateId);
+                
+            }
+        }
+        
+        printStudent();
+        addStudent();
+        deleteStudent();
+        editStudent()
+    </script>
+</body>
+</html>
