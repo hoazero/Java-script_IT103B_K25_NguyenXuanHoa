@@ -7,76 +7,111 @@
 </head>
 <body>
     <script>
-        let students = [
-            {id: 1, name: "Hòa", email: "hoa@gmail.com", score: 9},
-            {id: 2, name: "Hải", email: "hai@gmail.com", score: 8},
-        ];
+        // let students = [
+        //     {id: 1, name: "Hòa", email: "hoa@gmail.com", score: 9},
+        //     {id: 2, name: "Hải", email: "hai@gmail.com", score: 8},
+        // ];
 
         //id: ,Tên: ,email: ,score: .
-        function printStudent() {
-            // students = [];
-            students.forEach((student) => {
-                console.log(`id: ${student.id},Tên: ${student.name},email: ${student.email},score: ${student.score}.`);
+        // function printStudent() {
+        //     // students = [];
+        //     students.forEach((student) => {
+        //         console.log(`id: ${student.id},Tên: ${student.name},email: ${student.email},score: ${student.score}.`);
                 
-            })
-        }
+        //     });
+        // }
 
-        function addStudent() {
-            let name = prompt("nhập tên sv");
-            let email = prompt("nhập email sv");
-            let score = +prompt("nhập điểm sv");
+        // function addStudent() {
+        //     let name = prompt("nhập tên sv");
+        //     let email = prompt("nhập email sv");
+        //     let score = +prompt("nhập điểm sv");
 
-            let newStudent = {
-                id: students.length !== 0 ? students[students.length - 1].id + 1 : 1,
-                name: name,
-                email: email,
-                score: +score,
-            }
+        //     let newStudent = {
+        //         id: students.length !== 0 ? students[students.length - 1].id + 1 : 1,
+        //         name: name,
+        //         email: email,
+        //         score: +score,
+        //     };
 
-            students.push(newStudent);
-            printStudent();
-        }
+        //     students.push(newStudent);
+        //     printStudent();
+        // }
 
-        function deleteStudent() {
-            let id = +prompt("nhập id muốn xóa");
-            let findStuIndex = students.findIndex((student) => id === student.id);
+        // function deleteStudent() {
+        //     let id = +prompt("nhập id muốn xóa");
+        //     let findStuIndex = students.findIndex((student) => id === student.id);
 
-            if(findStuIndex != -1){
-                students.splice(findStuIndex, 1);
-            }else{
-                console.log("ko có sv với id vừa nhập", id);
-            }
+        //     if(findStuIndex != -1){
+        //         students.splice(findStuIndex, 1);
+        //     }else{
+        //         console.log("ko có sv với id vừa nhập", id);
+        //     }
 
-            printStudent();
-        }
+        //     printStudent();
+        // }
 
-        function editStudent() {
-            let updateId = +prompt("Nhập id cần sửa");
-            let findId = students.findIndex((stu) => stu.id === updateId);
+        // function editStudent() {
+        //     let updateId = +prompt("Nhập id cần sửa");
+        //     let findId = students.findIndex((stu) => stu.id === updateId);
 
-            if(findId != -1){
-                let newName = prompt("nhập tên sinh viên mới", students[findId].name);
-                let newEmail = prompt("nhập email mới", students[findId].email);
-                let newScore = prompt("nhập score mới", students[findId].score);
+        //     if(findId != -1){
+        //         let newName = prompt("nhập tên sinh viên mới", students[findId].name);
+        //         let newEmail = prompt("nhập email mới", students[findId].email);
+        //         let newScore = prompt("nhập score mới", students[findId].score);
 
-                let newDataStu = {
-                    id: updateId,
-                    name: newName,
-                    email: newEmail,
-                    score: newScore,
-                }
+        //         let newDataStu = {
+        //             id: updateId,
+        //             name: newName,
+        //             email: newEmail,
+        //             score: newScore,
+        //         };
 
-                students[findId] = newDataStu;
-            }else{
-                console.log("ko có sinh viên nào có id: ", updateId);
-                
-            }
-        }
+        //         students[findId] = newDataStu;
+        //     }else{
+        //         console.log("ko có sinh viên nào có id: ", updateId);
+        //     }
+        // }
         
-        printStudent();
-        addStudent();
-        deleteStudent();
-        editStudent()
+
+        // printStudent();
+        // addStudent();
+        // deleteStudent();
+        // editStudent();
+
+        let students = [
+            {id: 1, name: "Hòa", email: "hoa@gmail.com", score: 9},
+            {id: 2, name: "Long", email: "Long@gmail.com", score: 4},
+            {id: 3, name: "Hải", email: "Hai@gmail.com", score: 7},
+            {id: 4, name: "Hương", email: "Huong@gmail.com", score: 8},
+            {id: 5, name: "Huy", email: "Huy@gmail.com", score: 3},
+        ]
+
+        let inputStu = students.forEach((stu) => {
+            console.log(`id: ${stu.id},Tên: ${stu.name},Email: ${stu.email},Điểm: ${stu.score}.`);
+            
+        });
+
+        let stuTopHigt = students.filter((stu) => stu.score >= 8)
+        // .reduce(acc => acc);
+        console.log(stuTopHigt);
+        console.log(`số lượng sinh viên giỏi: ${stuTopHigt.length} bạn`);
+        
+        let stuTopLoss = students.filter((stu) => stu.score < 5);
+        console.log(stuTopLoss);
+        console.log("Cảnh báo những bạn này cần cố gắng hơn");
+        
+        let listReduce = students.sort((a, b) => b.score - a.score);
+        console.log(`thứ tự giảm dần`);
+        
+        console.log(listReduce);
+        
+        console.log(`3 bạn điểm thấp nhất là`);
+        
+        for (let i = 0; i < students.length; i++) {
+            if(i > 1){
+                console.log(students[i]);
+            }
+        }
     </script>
 </body>
 </html>
