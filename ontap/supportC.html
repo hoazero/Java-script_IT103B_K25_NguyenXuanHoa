@@ -6,8 +6,16 @@
     <title>Document</title>
 </head>
 <body>
+    <h2> Quản lý sinh viên</h2>
+    <div id="all-students"></div> <hr>
+    <div id="good-students"></div> <hr>
+    <div id="weak-students"></div> <hr>
+    <div id="sorted-students"></div> <hr>
+    <div id="top3-weak"></div>
+
     <script>
         // let students = [
+
         //     {id: 1, name: "Hòa", email: "hoa@gmail.com", score: 9},
         //     {id: 2, name: "Hải", email: "hai@gmail.com", score: 8},
         // ];
@@ -78,40 +86,62 @@
         // deleteStudent();
         // editStudent();
 
+        // let students = [
+        //     {id: 1, name: "Hòa", email: "hoa@gmail.com", score: 9},
+        //     {id: 2, name: "Long", email: "Long@gmail.com", score: 4},
+        //     {id: 3, name: "Hải", email: "Hai@gmail.com", score: 7},
+        //     {id: 4, name: "Hương", email: "Huong@gmail.com", score: 8},
+        //     {id: 5, name: "Huy", email: "Huy@gmail.com", score: 3},
+        // ]
+
+        // let inputStu = students.forEach((stu) => {
+        //     console.log(`id: ${stu.id},Tên: ${stu.name},Email: ${stu.email},Điểm: ${stu.score}.`);
+            
+        // });
+
+        // let stuTopHigt = students.filter((stu) => stu.score >= 8)
+        // // .reduce(acc => acc);
+        // console.log(stuTopHigt);
+        // console.log(`số lượng sinh viên giỏi: ${stuTopHigt.length} bạn`);
+        
+        // let stuTopLoss = students.filter((stu) => stu.score < 5);
+        // console.log(stuTopLoss);
+        // console.log("Cảnh báo những bạn này cần cố gắng hơn");
+        
+        // let listReduce = students.sort((a, b) => b.score - a.score);
+        // console.log(`thứ tự giảm dần`);
+        
+        // console.log(listReduce);
+        
+        // console.log(`3 bạn điểm thấp nhất là`);
+        
+        // for (let i = 0; i < students.length; i++) {
+        //     if(i > 1){
+        //         console.log(students[i]);
+        //     }
+        // }
+
         let students = [
             {id: 1, name: "Hòa", email: "hoa@gmail.com", score: 9},
             {id: 2, name: "Long", email: "Long@gmail.com", score: 4},
             {id: 3, name: "Hải", email: "Hai@gmail.com", score: 7},
             {id: 4, name: "Hương", email: "Huong@gmail.com", score: 8},
             {id: 5, name: "Huy", email: "Huy@gmail.com", score: 3},
-        ]
+        ];
 
-        let inputStu = students.forEach((stu) => {
-            console.log(`id: ${stu.id},Tên: ${stu.name},Email: ${stu.email},Điểm: ${stu.score}.`);
-            
+        let allStudent = document.getElementById("all-students");
+        let goodStudents = document.getElementById("good-students");
+        let weakStudents = document.getElementById("weak-students");
+        let sortedStudents = document.getElementById("sorted-students");
+        let top3Weak = document.getElementById("top3-weak");
+
+        let content = "Danh sách sinh viên"
+
+        students.forEach(s => {
+            content += `<p>${s.id} | ${s.name} | ${s.email} | ${s.score}</p>`
         });
 
-        let stuTopHigt = students.filter((stu) => stu.score >= 8)
-        // .reduce(acc => acc);
-        console.log(stuTopHigt);
-        console.log(`số lượng sinh viên giỏi: ${stuTopHigt.length} bạn`);
-        
-        let stuTopLoss = students.filter((stu) => stu.score < 5);
-        console.log(stuTopLoss);
-        console.log("Cảnh báo những bạn này cần cố gắng hơn");
-        
-        let listReduce = students.sort((a, b) => b.score - a.score);
-        console.log(`thứ tự giảm dần`);
-        
-        console.log(listReduce);
-        
-        console.log(`3 bạn điểm thấp nhất là`);
-        
-        for (let i = 0; i < students.length; i++) {
-            if(i > 1){
-                console.log(students[i]);
-            }
-        }
+        allStudent.innerHTML = content;
     </script>
 </body>
 </html>

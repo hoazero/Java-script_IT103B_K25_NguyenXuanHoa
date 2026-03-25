@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- phần thêm mới cv -->
+    <div>
+        <input type="text" id="nameTodo">
+        <input type="date" name="" id="deadLine-todo">
+        <select name="" id="status-todo">
+            <option value="">Loại công việc</option>
+            <option value="to do">to do</option>
+            <option value="pending">pending</option>
+        </select>
+        <button id="btn-push" onclick="pushDataTodos(event)">Thêm công việc</button>
+    </div>
+    <br><br>
+
+    <!-- phần tìm kiếm và lọc -->
+    <input type="text" placeholder="Tìm kiếm công việc" id="findInput"> <button onclick="findTodoByName()">Tìm kiếm</button>
+    <select name="" id="">
+        <option value="">Loại công việc</option>
+        <option value="">to do</option>
+        <option value="">pending</option>
+    </select>
+
+    <!-- phần hiển thị cv -->
+    <h3>Danh sách công việc</h3>
+    <ul id="todoList">
+        <!-- <li>Công việc 1 - ngày đến hạn - loại công việc <button>sửa</button> <button>xóa</button></li>
+        <li>Công việc 2 - ngày đến hạn - loại công việc <button>sửa</button> <button>xóa</button></li>
+        <li>Công việc 3 - ngày đến hạn - loại công việc <button>sửa</button> <button>xóa</button></li> -->
+    </ul>
+
+    <script src="./script.js"></script>
+</body>
+</html>
